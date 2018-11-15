@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="../node_modules/mocha/mocha.css" rel="stylesheet" />
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <script type="module">
+    import './helpers.test.js';
+    import './set-card.test.js';
+    import './set-game.test.js';
+
+    mocha.checkLeaks();
+    mocha.run();
+  </script>
+</body>
+</html>
