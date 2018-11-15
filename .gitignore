@@ -1,0 +1,21 @@
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+
+## testing
+/coverage/
+
+## temp folders
+/.tmp/
+/.cache/
+
+## we don't want lock files for now
+yarn.lock
+package-lock.json
