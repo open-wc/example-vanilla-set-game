@@ -11,7 +11,8 @@
   },
   "scripts": {
     "lint:eslint": "eslint --ext .js,.html .",
-    "storybook:build": "build-storybook",
+    "site:build": "npm run storybook:build",
+    "storybook:build": "build-storybook -o _site",
     "storybook:start": "start-storybook -p 9001",
     "test": "karma start",
     "test:watch": "karma start --auto-watch=true --single-run=false",
