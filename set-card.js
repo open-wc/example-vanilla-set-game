@@ -179,7 +179,4 @@ class SetCard extends HTMLElement {
   }
 }
 
-// TODO investigate why this is needed for karma tests
-if (!window.customElements.get('set-card')) {
-  window.customElements.define('set-card', SetCard);
-}
+window.customElements.define('set-card', SetCard);

@@ -54,7 +54,4 @@ class SetDeck extends HTMLElement {
   }
 }
 
-// TODO investigate why this is needed for karma tests
-if (!window.customElements.get('set-deck')) {
-  window.customElements.define('set-deck', SetDeck);
-}
+window.customElements.define('set-deck', SetDeck);
