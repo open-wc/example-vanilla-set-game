@@ -17,14 +17,17 @@
     "storybook:start": "start-storybook -p 9001",
     "test": "karma start",
     "test:watch": "karma start --auto-watch=true --single-run=false",
+    "test:es5": "karma start karma.es5.config.js",
+    "test:es5:watch": "karma start karma.es5.config.js --auto-watch=true --single-run=false",
     "test:es5:bs": "karma start karma.es5.bs.config.js"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^0.3.0",
     "@open-wc/storybook": "^0.2.0",
-    "@open-wc/testing": "^0.7.0",
-    "@open-wc/testing-karma": "^0.3.0",
-    "@open-wc/testing-karma-bs": "^0.1.0",
-    "@open-wc/testing-wallaby": "^0.1.3"
+    "@open-wc/testing": "^0.8.0",
+    "@open-wc/testing-karma": "^0.4.0",
+    "@open-wc/testing-karma-bs": "^0.2.0",
+    "@open-wc/testing-wallaby": "^0.1.3",
+    "webpack-merge": "^4.1.5"
   }
 }
