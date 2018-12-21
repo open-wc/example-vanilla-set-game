@@ -10,7 +10,7 @@
     "lit-html": "^0.12.0"
   },
   "scripts": {
-    "lint": "npm run lint:eslint",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint --ext .js,.html .",
     "site:build": "npm run storybook:build",
     "storybook:build": "build-storybook -o _site",
@@ -19,7 +19,11 @@
     "test:watch": "karma start --auto-watch=true --single-run=false",
     "test:es5": "karma start karma.es5.config.js",
     "test:es5:watch": "karma start karma.es5.config.js --auto-watch=true --single-run=false",
-    "test:es5:bs": "karma start karma.es5.bs.config.js"
+    "test:es5:bs": "karma start karma.es5.bs.config.js",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "format:eslint": "eslint --ext .js,.html . --fix",
+    "lint:prettier": "prettier '**/*.js' --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "format:prettier": "prettier '**/*.js' --write"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^0.3.0",
@@ -28,6 +32,18 @@
     "@open-wc/testing-karma": "^0.4.0",
     "@open-wc/testing-karma-bs": "^0.2.0",
     "@open-wc/testing-wallaby": "^0.1.3",
-    "webpack-merge": "^4.1.5"
+    "webpack-merge": "^4.1.5",
+    "husky": "^1.0.0",
+    "lint-staged": "^8.0.0",
+    "@open-wc/prettier-config": "^0.1.0",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }

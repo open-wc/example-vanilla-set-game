@@ -1,5 +1,3 @@
 module.exports = {
-  extends: [
-    '@open-wc/eslint-config',
-  ].map(require.resolve),
+  extends: ['@open-wc/eslint-config', 'eslint-config-prettier'].map(require.resolve),
 };
