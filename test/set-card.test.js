@@ -1,10 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import {
-  html,
-  fixture,
-  litFixture,
-  expect,
-} from '@open-wc/testing';
+import { html, fixture, litFixture, expect } from '@open-wc/testing';
 
 import '../set-card';
 import '../set-deck';

@@ -174,7 +174,14 @@ class SetCard extends HTMLElement {
         }
         ${this._cssShape}
       </style>
-      ${Array.from(new Array(this.quantity)).map(() => html`<div></div>`)}
+      ${
+        Array.from(new Array(this.quantity)).map(
+          () =>
+            html`
+              <div></div>
+            `,
+        )
+      }
     `;
   }
 }

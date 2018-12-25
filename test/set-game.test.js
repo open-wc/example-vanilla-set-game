@@ -1,10 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import {
-  html,
-  fixture,
-  litFixture,
-  expect,
-} from '@open-wc/testing';
+import { html, fixture, litFixture, expect } from '@open-wc/testing';
 
 import '../set-game';
 
@@ -47,7 +42,11 @@ describe('Game', () => {
     const card3 = { ...card1, color: 'blue' };
     const card4 = { ...card1, shape: 'oval' };
 
-    const el = await litFixture(html`<set-game .cards=${[card1, card2, card3, card4]}></set-game>`);
+    const el = await litFixture(
+      html`
+        <set-game .cards=${[card1, card2, card3, card4]}></set-game>
+      `,
+    );
 
     el.toggleCard(card1);
     el.toggleCard(card2);

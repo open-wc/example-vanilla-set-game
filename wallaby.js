@@ -8,15 +8,8 @@ const wallabyPostprocessor = wallabyWebpack({
 });
 
 module.exports = () => ({
-  files: [
-    { pattern: '*.js', load: false },
-    '!wallaby.js',
-    '!*.config.js',
-    '!*.conf.js',
-  ],
-  tests: [
-    { pattern: 'test/*.test.js', load: false },
-  ],
+  files: [{ pattern: '*.js', load: false }, '!wallaby.js', '!*.config.js', '!*.conf.js'],
+  tests: [{ pattern: 'test/*.test.js', load: false }],
   testFramework: 'mocha',
   debug: true,
   env: {
