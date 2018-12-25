@@ -10,7 +10,7 @@ export const isSameCard = (cardA, cardB) => {
   return true;
 };
 
-export const checkSet = (cards) => {
+export const checkSet = cards => {
   if (cards.length !== 3) {
     return false;
   }
@@ -21,17 +21,14 @@ export const checkSet = (cards) => {
     shape: false,
     filling: false,
   };
-  ['quantity', 'color', 'shape', 'filling'].forEach((property) => {
-    if (
-      cards[0][property] === cards[1][property]
-      && cards[0][property] === cards[2][property]
-    ) {
+  ['quantity', 'color', 'shape', 'filling'].forEach(property => {
+    if (cards[0][property] === cards[1][property] && cards[0][property] === cards[2][property]) {
       result[property] = true;
     }
     if (
-      cards[0][property] !== cards[1][property]
-      && cards[0][property] !== cards[2][property]
-      && cards[1][property] !== cards[2][property]
+      cards[0][property] !== cards[1][property] &&
+      cards[0][property] !== cards[2][property] &&
+      cards[1][property] !== cards[2][property]
     ) {
       result[property] = true;
     }
@@ -40,7 +37,7 @@ export const checkSet = (cards) => {
   return result.quantity && result.color && result.shape && result.filling;
 };
 
-export const markSets = (_cards) => {
+export const markSets = _cards => {
   const cards = _cards;
   let setCounter = 0;
   const cardCount = cards.length;
@@ -48,7 +45,9 @@ export const markSets = (_cards) => {
     return [];
   }
   // reset sets for every card
-  cards.forEach((card) => { card.sets = []; }); // eslint-disable-line no-param-reassign
+  cards.forEach(card => {
+    card.sets = []; // eslint-disable-line no-param-reassign
+  });
 
   let start = 0;
   do {
@@ -66,16 +65,16 @@ export const markSets = (_cards) => {
         j += 1;
       } while (j < cardCount);
       i += 1;
-    } while (i < (cardCount - 1));
+    } while (i < cardCount - 1);
     start += 1;
   } while (start + 2 < cardCount);
 
   return cards;
 };
 
-export const getSetCount = (cards) => {
+export const getSetCount = cards => {
   const uniqueSets = new Set();
-  cards.forEach((card) => {
+  cards.forEach(card => {
     card.sets.forEach(set => uniqueSets.add(set));
   });
   return uniqueSets.size;
@@ -85,7 +84,7 @@ export const removeCard = (cards, removeMe) => cards.filter(el => !isSameCard(el
 
 export const removeCards = (cards, cardsToRemove) => {
   let returnCards = cards;
-  cardsToRemove.forEach((cardToRemove) => {
+  cardsToRemove.forEach(cardToRemove => {
     returnCards = removeCard(returnCards, cardToRemove);
   });
   return returnCards;
@@ -127,7 +126,7 @@ function shuffle(array) {
 }
 
 let cardId = 0;
-export const generateCard = (options) => {
+export const generateCard = options => {
   cardId += 1;
   return {
     id: `card${cardId}`,
@@ -140,17 +139,19 @@ export const generateCard = (options) => {
 export const generateDeck = (doShuffle = true) => {
   const data = [];
   let i = 0;
-  [1, 2, 3].forEach((quantity) => {
-    ['red', 'green', 'blue'].forEach((color) => {
-      ['oval', 'bar', 'skewed'].forEach((shape) => {
-        ['empty', 'striped', 'full'].forEach((filling) => {
-          data.push(generateCard({
-            id: `card${i}`,
-            quantity,
-            color,
-            shape,
-            filling,
-          }));
+  [1, 2, 3].forEach(quantity => {
+    ['red', 'green', 'blue'].forEach(color => {
+      ['oval', 'bar', 'skewed'].forEach(shape => {
+        ['empty', 'striped', 'full'].forEach(filling => {
+          data.push(
+            generateCard({
+              id: `card${i}`,
+              quantity,
+              color,
+              shape,
+              filling,
+            }),
+          );
           i += 1;
         });
       });

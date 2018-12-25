@@ -1,13 +1,6 @@
 import { html, render } from 'lit-html';
 
-import {
-  checkSet,
-  removeCards,
-  markSets,
-  generateDeck,
-  findCard,
-  getSetCount,
-} from './helpers';
+import { checkSet, removeCards, markSets, generateDeck, findCard, getSetCount } from './helpers';
 
 import './set-card';
 import './set-deck';
@@ -71,7 +64,6 @@ export default class SetGame extends HTMLElement {
     }
   }
 
-
   toggleCard(_card) {
     const card = findCard(this.cards, _card);
     if (!card) {
@@ -97,7 +89,7 @@ export default class SetGame extends HTMLElement {
   }
 
   cheat(setName = 'set0') {
-    this.cardNodes.forEach((cardNode) => {
+    this.cardNodes.forEach(cardNode => {
       if (cardNode.sets.includes(setName)) {
         cardNode.style.borderColor = 'red'; // eslint-disable-line no-param-reassign
         setTimeout(() => {
@@ -144,6 +136,7 @@ export default class SetGame extends HTMLElement {
           cursor: pointer;
         }
       </style>
+
       <h1>${this.header}</h1>
       <div class="table">
         <div class="table__side">
@@ -152,18 +145,22 @@ export default class SetGame extends HTMLElement {
           <button @click=${() => this.cheat()}>Cheat</button>
         </div>
         <div class="table__cards">
-          ${this.cards.map(card => html`
-            <set-card
-              .id=${card.id}
-              .selected=${card.selected}
-              .sets=${card.sets}
-              .quantity=${card.quantity}
-              .color=${card.color}
-              .shape=${card.shape}
-              .filling=${card.filling}
-              @click=${ev => this.toggleCard(ev.target.id)}
-            ></set-card>
-          `)}
+          ${
+            this.cards.map(
+              card => html`
+                <set-card
+                  .id=${card.id}
+                  .selected=${card.selected}
+                  .sets=${card.sets}
+                  .quantity=${card.quantity}
+                  .color=${card.color}
+                  .shape=${card.shape}
+                  .filling=${card.filling}
+                  @click=${ev => this.toggleCard(ev.target.id)}
+                ></set-card>
+              `,
+            )
+          }
         </div>
       </div>
     `;
